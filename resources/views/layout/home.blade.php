@@ -3,11 +3,11 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-      Hai, welcome
+      Hai, Welcome!
     </div>
     <div class="card-body">
       <div class="alert alert-info">
-        Selamat Datang di Web Laravel
+        Selamat Datang di Restoran Kami
       </div>
     </div>
   </div>

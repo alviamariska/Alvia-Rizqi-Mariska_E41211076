@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Reservasi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,7 +21,7 @@
     {{-- Navbar --}}
     <nav class="navbar navbar-expand-lg bg-success navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Laravel 10</a>
+            <a class="navbar-brand" href="#">Restoran</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -36,9 +36,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->segment('1') == 'students' ? 'active' : '' }}"
-                            aria-current="page" href="{{ url('students') }}">
-                            <i class="fa-solid fa-user"></i> Students
+                        <a class="nav-link {{ request()->segment('1') == 'reservations' ? 'active' : '' }}"
+                            aria-current="page" href="{{ url('reservations') }}">
+                            <i class="fa-solid fa-user"></i> Reservasi Pelanggan
                         </a>
                     </li>
 

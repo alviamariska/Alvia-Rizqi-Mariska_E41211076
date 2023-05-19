@@ -43,7 +43,7 @@ class StudentsController extends Controller
         $students->phone = $request->txtPhone;
         $students->save();
 
-        return redirect('students')->with('msg','NIM baru berhasil ditambahkan');
+        return redirect('reservations')->with('msg','ID Pelanggan baru berhasil ditambahkan');
     }
 
     /**

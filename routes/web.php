@@ -21,8 +21,8 @@ Route::get('/home', function () {
     return view('layout.home');
 });
 
-Route::get('/students/add', function () {
-    return view('students.formadd');
+Route::get('/reservations/add', function () {
+    return view('reservations.formadd');
 });
 
-Route::resource('students','App\Http\Controllers\StudentsController', ['except' => ['create', 'edit']]);
+Route::resource('reservations','App\Http\Controllers\ReservationsController', ['except' => ['create', 'edit']]);
