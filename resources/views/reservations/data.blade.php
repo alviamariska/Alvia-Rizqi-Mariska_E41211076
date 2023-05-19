@@ -9,6 +9,12 @@
             </button>
         </div>
         <div class="card-body">
+            @if (session('msg'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Berhasil!</strong> {{ session('msg') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <table class="table table-sm table-striped table-bordered">
                 <thead>
                     <tr>
@@ -17,7 +23,7 @@
                         <th>Nama</th>
                         <th>No Meja</th>
                         <th>Phone</th>
-                        <th>#</th>
+                        <th>More Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,10 +35,18 @@
                             <td>{{ $row->no_meja }}</td>
                             <td>{{ $row->phone }}</td>
                             <td>
-                                <button onclick="window.location='{{ url('reservations/' . $row->id_pelanggan) }}'" type="button"
-                                    class="btn btn-sm btn-info" title="Edit">
+                                <button onclick="window.location='{{ url('reservations/' . $row->id_pelanggan) }}'"
+                                    type="button" class="btn btn-sm btn-info" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </button>
+                                <form onsubmit="retuen deleteData('{{ $row->id_pelanggan }}')" style="display: inline"
+                                    method="POST" action="{{ url('reservations/' . $row->id_pelanggan) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" title="Hapus" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -40,4 +54,11 @@
             </table>
         </div>
     </div>
+    <script>
+        function deleteData(Nama) {
+            pesan = confirm(`Hapus Reservasi Atas Nama ${Nama}?`);
+            if (pesan) return true;
+            else return false;
+        }
+    </script>
 @endsection

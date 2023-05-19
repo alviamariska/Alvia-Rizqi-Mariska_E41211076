@@ -11,7 +11,7 @@ class UpdateReservationsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,33 @@ class UpdateReservationsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'txtNama' => 'required',
+            'txtMeja' => 'required|numeric',
+            'txtPhone' => 'required|numeric',
         ];
     }
+
+    public function messages(): array
+{
+    return [
+        'txtid.required' => ':attribute tidak boleh kosong',
+        'txtid.unique' => ':attribute Sudah ada di dalam tabel',
+        'txtNama.required' => ':attribute tidak boleh kosong',
+        'txtNama.unique' => ':attribute Sudah ada di dalam tabel',
+        'txtMeja.required' => ':attribute tidak boleh kosong',
+        'txtMeja.unique' => ':attribute Sudah ada di dalam tabel',
+        'txtPhone.required' => ':attribute tidak boleh kosong',
+        'txtPhone.unique' => ':attribute Sudah ada di dalam tabel',
+    ];
+}
+
+public function attributes(): array
+{
+    return [
+        'txtid' => 'ID Pelanggan',
+        'txtNama' => 'Nama',
+        'txtMeja' => 'No Meja',
+        'txtPhone' => 'Nomor HP',
+    ];
+}
 }

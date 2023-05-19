@@ -9,12 +9,6 @@
             </button>
         </div>
         <div class="card-body">
-            @if (session('msg'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Berhasil!</strong> {{ session('msg') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
             {{-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

@@ -46,10 +46,10 @@ class ReservationsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Reservations $reservations)
+    public function show(Reservations $reservations, $id_pelanggan)
     {
-        $data = $$reservations->find($$id_pelanggan);
-        return view('$reservations.formedit')->with([
+        $data = $reservations->find($id_pelanggan);
+        return view('reservations.formedit')->with([
             'txtid' => $id_pelanggan,
             'txtNama' => $data->Nama,
             'txtMeja' => $data->no_meja,
@@ -68,16 +68,25 @@ class ReservationsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateReservationsRequest $request, Reservations $reservations)
+    public function update(UpdateReservationsRequest $request, Reservations $reservations,$id_pelanggan)
     {
-        //
+        $data = $reservations->find($id_pelanggan);
+        $data->nama = $request->txtNama;
+        $data->no_meja = $request->txtMeja;
+        $data->phone = $request->txtPhone;
+        $data->save();
+
+        return redirect('reservations')->with('msg','Data dengan nama '.$data->Nama.' berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reservations $reservations)
+    public function destroy(Reservations $reservations, $id_pelanggan)
     {
-        //
+        $data = $reservations->find($id_pelanggan);
+        $data->delete();
+
+        return redirect('reservations')->with('msg','Reservasi atas nama '.$data->Nama.' berhasil dihapus');
     }
 }
